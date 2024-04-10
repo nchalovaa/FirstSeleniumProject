@@ -13,6 +13,7 @@ public class CreateAccountTest extends TestBase {
                 type(By.name("Password"), "Chalova1@");
                 type(By.name("ConfirmPassword"), "Chalova1@");
                 click(By.cssSelector("[name='register-button']"));
+                //Assert computer in quantity
                 Assert.assertTrue(isElementFormPresent(By.cssSelector("[href='/logout']")));
 
         }
