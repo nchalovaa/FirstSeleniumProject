@@ -1,3 +1,5 @@
+package com.demo.tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -14,19 +16,21 @@ public class AddItemToTheCart extends TestBase {
         type(By.name("Password"), "Chalova1@");
         click(By.cssSelector("[class='button-1 login-button']"));
         click((By.cssSelector("[class='button-2 product-box-add-to-cart-button']")));
-        //assert Computer is added
-        Assert.assertTrue(isComputerAdded("2"));
+        //assert is Product added in Basket
+        Assert.assertTrue(isProductAdded("14.1-inch Laptop"));
 
     }
 
-        public boolean isComputerAdded(String text) {
+        public boolean isProductAdded(String text) {
 
-            List<WebElement> products = driver.findElements(By.cssSelector("[name='itemquantity4151570']"));
-            for(WebElement element: products) {
-                if(element.getText().contains(text))
+            List<WebElement> products = driver.findElements(By.cssSelector("[class='product-name']"));
+            for (WebElement product : products) {
+                if (product.getText().contains(text)) {
                     return true;
+                }
             }
             return false;
         }
+
     }
 
